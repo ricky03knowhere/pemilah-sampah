@@ -1,7 +1,6 @@
 // Notiofication Handler
 function notif(icon, title, isRefresh = false) {
   let refresh
-
   Swal.fire({
     icon: icon,
     title: title,
@@ -18,8 +17,8 @@ let run = false
 let width = 0
 let id, random, type
 
-let loadingWrapper = $('.organic .loader-wrapper')
-let scanningProgressBar = $('.organic .progress-bar')
+let loadingWrapper = $('.non-organic .loader-wrapper')
+let scanningProgressBar = $('.non-organic .progress-bar')
 let recyclingProgressBar = $('.trash-recycle .progress-bar')
 let imgReuse = $('.trash-recycle .img-reuse')
 
@@ -28,25 +27,25 @@ function scanningHandler() {
   random = Math.floor((Math.random() * 4) + 1)
   type = (random === 1) ? 'Metal' : (random === 2) ? 'Kertas' : (random === 3) ? 'Kaca' : 'Plastik'
 
-  $('.organic .img-type').fadeIn()
-  $('.organic .back, .organic .rescan, .organic .recycle, .organic .start').attr('disabled', 'disabled')
+  $('.non-organic .img-type').fadeIn()
+  $('.non-organic .back, .non-organic .rescan, .non-organic .recycle, .non-organic .start').attr('disabled', 'disabled')
 
-  $('.organic h2').html('')
-  $('.organic .img-type').attr('src', `/img/${type}.png`)
+  $('.non-organic h2').html('')
+  $('.non-organic .img-type').attr('src', `/img/${type}.png`)
 
   if (width === 100) {
     run = false
     width = 0
-    $('.organic .back, .organic .rescan, .organic .recycle').removeAttr('disabled')
+    $('.non-organic .back, .non-organic .rescan, .non-organic .recycle').removeAttr('disabled')
 
     loadingWrapper.fadeOut()
     scanningProgressBar.css('width', '0%')
 
     clearInterval(id);
 
-    $('.organic .btn-organic').hide()
-    $('.organic .btn-type').show()
-    $('.organic h2').html(`Sampah berjenis ${type}`)
+    $('.non-organic .btn-non-organic').hide()
+    $('.non-organic .btn-type').show()
+    $('.non-organic h2').html(`Sampah berjenis ${type}`)
 
     notif('success', 'Berhasil Dipindai.')
   } else {
@@ -88,4 +87,19 @@ function recyclingHandler() {
     recyclingProgressBar.css('width', `${width*1.4}%`)
     recyclingProgressBar.html(`${width}%`)
   }
+}
+
+// Trash Recycling Function
+function trashRecycling() {
+  run = true
+  id = run ? setInterval(recyclingHandler, 30) : false
+
+  $('.trash-recycle .reused').html(`<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+  `)
+
+  imgReuse.prop('src', '/img/reuse.png')
+  imgReuse.css('animation', 'rotate 1s infinite')
+  $('.trash-recycle .btn-wrapper').hide()
 }

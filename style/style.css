@@ -12,19 +12,27 @@
   height: 90vh;
   border-radius: 1.5em;
   overflow: hidden;
+  box-shadow: 5px 5px 20px #000000b9;
 }
 .container h1 {
   margin-bottom: 2em;
+  text-shadow: 5px 5px 8px #00000083;
 }
 .container button {
   border-radius: 2em;
   padding: 0.5em 2em;
+  margin-right: 1em;
+  margin-left: 1em;
+  box-shadow: 3px 3px 8px #00000083;
+}
+.container img {
+  filter: drop-shadow(3px 3px 10px #000000b9);
 }
 
 .home {
   height: 100%;
   position: relative;
-  transition: 1s;
+  transition: all 1s;
 }
 .home.slide-up {
   margin-top: -85vh;
@@ -36,9 +44,11 @@
 }
 .home .icon-img {
   width: 50%;
+  margin-top: 2em;
 }
 .home .fa-angle-double-right {
   font-size: 3rem;
+  text-shadow: 3px 3px 8px #00000083;
 }
 .home button {
   position: absolute;
@@ -50,62 +60,95 @@
   height: 100%;
   position: relative;
   margin-top: 3em;
-  transition: 1s;
+  transition: all 1s;
 }
 .trash-type.slide-up {
   margin-top: -76vh;
 }
 .trash-type h2 {
   margin: 1em 0 1em;
+  text-shadow: 3px 3px 8px #00000083;
 }
 .trash-type .row > div {
   display: grid;
   align-content: center;
   justify-items: center;
 }
+.trash-type .toggle.ios, .trash-type .toggle-on.ios, .trash-type .toggle-off.ios {
+  border-radius: 20rem;
+  box-shadow: 3px 3px 8px #00000083;
+}
+.trash-type .toggle.ios .toggle-handle {
+  border-radius: 20rem;
+}
 .trash-type img {
   width: 60%;
 }
 
-.organic {
+.non-organic {
   margin-top: 3.5em;
   margin-bottom: 20em;
-  transition: 1s;
+  transition: all 1s;
 }
-.organic.slide-up {
+.non-organic.slide-up {
   margin-top: -115vh;
 }
-.organic .img-type {
+.non-organic .img-type {
   display: none;
 }
-.organic h2 {
-  margin-top: 0.5em;
+.non-organic h2 {
+  margin-top: 1em;
+  transition: all 1s;
+  text-shadow: 3px 3px 8px #00000083;
 }
-.organic .reused {
+.non-organic .reused {
   display: none;
   position: absolute;
   top: 3em;
   right: 1em;
 }
-.organic .loader-wrapper {
+.non-organic .loader-wrapper {
   width: 100%;
   position: relative;
   opacity: 1;
   display: none;
 }
-.organic button {
-  margin-top: 2.5em;
+.non-organic .loader-wrapper .spinner-grow {
+  box-shadow: 3px 3px 8px #00000083;
 }
-.organic .progress {
+.non-organic button {
+  margin-top: 2em;
+}
+.non-organic .progress {
   width: 60%;
   margin: auto;
   transition: all 1s;
+  box-shadow: 3px 3px 8px #00000083;
 }
-.organic .progress .progress-bar {
+.non-organic .progress .progress-bar {
   width: 0%;
 }
-.organic .btn-type {
+.non-organic h5 {
+  text-shadow: 3px 3px 8px #00000083;
+}
+.non-organic .btn-type {
   display: none;
+}
+
+.organic {
+  margin-top: 3.5em;
+  margin-bottom: 20em;
+  transition: all 1s;
+}
+.organic.slide-up {
+  margin-top: -115vh;
+}
+.organic h2 {
+  margin-top: 1em;
+  text-shadow: 3px 3px 8px #00000083;
+}
+.organic button {
+  margin-top: 2.5em;
 }
 
 .trash-recycle .row > div {
@@ -116,6 +159,7 @@
 }
 .trash-recycle h5 {
   margin: 2em;
+  text-shadow: 3px 3px 8px #00000083;
 }
 .trash-recycle .img-type {
   left: 2em;
@@ -124,7 +168,7 @@
 .trash-recycle .img-reuse {
   width: 8em;
   animation: rotate 1s infinite;
-  transition: 1s;
+  transition: all 1s;
 }
 @keyframes rotate {
   from {
@@ -134,10 +178,14 @@
     transform: rotate(360deg);
   }
 }
+.trash-recycle .spinner-grow {
+  box-shadow: 3px 3px 8px #00000083;
+}
 .trash-recycle .progress {
   width: 60%;
   margin: auto;
   transition: all 1s;
+  box-shadow: 3px 3px 8px #00000083;
 }
 .trash-recycle .btn-wrapper {
   display: none;

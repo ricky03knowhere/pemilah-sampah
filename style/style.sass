@@ -2,7 +2,20 @@
   padding: 0
   margin: 0
 
+// Mixin
+@mixin text-shadow()
+  text-shadow:  3px 3px 8px #00000083
 
+@mixin box-shadow()
+  box-shadow:  3px 3px 8px #00000083
+
+@mixin content-center()
+  display: grid
+  align-content: center
+  justify-items: center
+
+
+// Container
 .container
   margin-top: 2em
   text-align: center
@@ -12,103 +25,139 @@
   height: 90vh
   border-radius: 1.5em
   overflow: hidden
+  box-shadow: 5px 5px 20px #000000b9
   h1
     margin-bottom: 2em
+    text-shadow:  5px 5px 8px #00000083
   button
     border-radius: 2em
     padding: .5em 2em
+    margin-right: 1em
+    margin-left: 1em
+    @include box-shadow()
+  img
+    filter: drop-shadow(3px 3px 10px #000000b9)
 
-
+// Home
 .home
   height: 100%
   position: relative
-  transition: 1s
-  // display: none
+  transition: all  1s
   &.slide-up
     margin-top: -85vh
   .row > div
-    display: grid
-    align-content: center
-    justify-items: center
+    @include content-center()
 
   .icon-img
     width: 50%
+    margin-top: 2em
 
   .fa-angle-double-right
     font-size: 3rem
+    @include text-shadow()
+
   button
     position: absolute
     bottom: 2em
     transform: translateX(-50%)
 
+// Trash Type
 .trash-type
-  // display: none
   height: 100%
   position: relative
   margin-top: 3em
-  transition: 1s
+  transition: all  1s
   &.slide-up
     margin-top: -76vh
   h2
     margin: 1em 0 1em 
+    @include text-shadow()
+
   .row>div
-    display: grid
-    align-content: center
-    justify-items: center
-  // .toggler
-  //   border-radius: 20rem !important
+    @include content-center()
+
+  .toggle.ios, .toggle-on.ios, .toggle-off.ios
+    border-radius: 20rem
+    @include box-shadow()
+
+  .toggle.ios .toggle-handle
+    border-radius: 20rem
+
   img
     width: 60%
-
-.organic
+    
+// Non-Organic
+.non-organic
   margin-top: 3.5em
   margin-bottom: 20em
-  transition: 1s
+  transition: all  1s
   &.slide-up
     margin-top: -115vh
-
   .img-type
       display: none
   h2
-    margin-top: .5em
+    margin-top: 1em
+    transition: all  1s
+    @include text-shadow()
 
   .reused
     display: none
     position: absolute
     top: 3em
     right: 1em
-  
+
   .loader-wrapper
     width: 100%
     position: relative
     opacity: 1
     display: none
+    .spinner-grow
+      @include box-shadow()
+
   button
-    margin-top: 2.5em
+    margin-top: 2em
   .progress
     width: 60%
     margin: auto
     transition: all 1s
+    @include box-shadow()
     .progress-bar
       width: 0%
+  h5
+    @include text-shadow()
+
   .btn-type
     display: none
 
+// Organic
+.organic
+  margin-top: 3.5em
+  margin-bottom: 20em
+  transition: all  1s
+  &.slide-up
+    margin-top: -115vh
+  h2
+    margin-top: 1em
+    @include text-shadow()
+  button
+    margin-top: 2.5em
+
+// Trash Recycle
 .trash-recycle
   .row>div
-    display: grid
-    align-content: center
-    justify-items: center
+    @include content-center()
     margin-bottom: 3em
   h5
     margin: 2em
+    @include text-shadow()
+
   .img-type
     left: 2em
     position: relative
   .img-reuse
     width: 8em
     animation: rotate 1s infinite
-    transition: 1s
+    transition: all  1s
     
   @keyframes rotate 
     from
@@ -116,10 +165,14 @@
     to
       transform: rotate(360deg)
 
+  .spinner-grow
+    @include box-shadow()
+
   .progress
     width: 60%
     margin: auto
     transition: all 1s
+    @include box-shadow()
   
   .btn-wrapper
     display: none

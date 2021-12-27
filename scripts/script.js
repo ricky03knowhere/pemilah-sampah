@@ -9,45 +9,62 @@ $('.trash-type .back').on('click', () => {
 })
 
 $('.trash-type .next').on('click', () => {
+  let isNonOrganic = $('.trash-type .toggler').is(':checked')
+
+  if (isNonOrganic) {
+    $('.non-organic').show()
+    $('.organic').hide()
+  } 
+  else {
+    $('.non-organic').hide()
+    $('.organic').show()
+  }
+
   $('.trash-type').addClass('slide-up')
 })
-$('.organic .back').on('click', () => {
+
+
+// Non-Organic Trash Section
+$('.non-organic .back').on('click', () => {
   $('.trash-type').removeClass('slide-up')
+})
+
+$('.non-organic .start').on('click', () => {
+  loadingWrapper.fadeIn()
+  run = true
+  id = run ? setInterval(scanningHandler, 30) : false
+})
+
+$('.non-organic .rescan').on('click', () => {
+  loadingWrapper.fadeIn()
+  run = true
+  id = run ? setInterval(scanningHandler, 30) : false
+
+})
+
+$('.non-organic .recycle').on('click', () => {
+  $('.non-organic').addClass('slide-up')
+  trashRecycling()
 })
 
 
 // Organic Trash Section
-$('.organic .start').on('click', () => {
-  loadingWrapper.fadeIn()
-  run = true
-  id = run ? setInterval(scanningHandler, 30) : false
-})
-
-$('.organic .rescan').on('click', () => {
-  loadingWrapper.fadeIn()
-  run = true
-  id = run ? setInterval(scanningHandler, 30) : false
-
+$('.organic .back').on('click', () => {
+  $('.trash-type').removeClass('slide-up')
 })
 
 $('.organic .recycle').on('click', () => {
   $('.organic').addClass('slide-up')
-  run = true
-  id = run ? setInterval(recyclingHandler, 30) : false
 
-  $('.trash-recycle .reused').html(`<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-  `)
-
-  imgReuse.prop('src', '/img/reuse.png')
-  imgReuse.css('animation', 'rotate 1s infinite')
-  $('.trash-recycle .btn-wrapper').hide()
+  type = 'Organik'
+  trashRecycling()
 })
+
 
 
 // Trash Recycling Section
 $('.trash-recycle .back').on('click', () => {
+  $('.non-organic').removeClass('slide-up')
   $('.organic').removeClass('slide-up')
 })
 
