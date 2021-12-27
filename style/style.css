@@ -1,0 +1,146 @@
+*, html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  margin-top: 2em;
+  text-align: center;
+  padding: 3em;
+  background: #abcdef;
+  position: relative;
+  height: 90vh;
+  border-radius: 1.5em;
+  overflow: hidden;
+}
+.container h1 {
+  margin-bottom: 2em;
+}
+.container button {
+  border-radius: 2em;
+  padding: 0.5em 2em;
+}
+
+.home {
+  height: 100%;
+  position: relative;
+  transition: 1s;
+}
+.home.slide-up {
+  margin-top: -85vh;
+}
+.home .row > div {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+.home .icon-img {
+  width: 50%;
+}
+.home .fa-angle-double-right {
+  font-size: 3rem;
+}
+.home button {
+  position: absolute;
+  bottom: 2em;
+  transform: translateX(-50%);
+}
+
+.trash-type {
+  height: 100%;
+  position: relative;
+  margin-top: 3em;
+  transition: 1s;
+}
+.trash-type.slide-up {
+  margin-top: -76vh;
+}
+.trash-type h2 {
+  margin: 1em 0 1em;
+}
+.trash-type .row > div {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+.trash-type img {
+  width: 60%;
+}
+
+.organic {
+  margin-top: 3.5em;
+  margin-bottom: 20em;
+  transition: 1s;
+}
+.organic.slide-up {
+  margin-top: -115vh;
+}
+.organic .img-type {
+  display: none;
+}
+.organic h2 {
+  margin-top: 0.5em;
+}
+.organic .reused {
+  display: none;
+  position: absolute;
+  top: 3em;
+  right: 1em;
+}
+.organic .loader-wrapper {
+  width: 100%;
+  position: relative;
+  opacity: 1;
+  display: none;
+}
+.organic button {
+  margin-top: 2.5em;
+}
+.organic .progress {
+  width: 60%;
+  margin: auto;
+  transition: all 1s;
+}
+.organic .progress .progress-bar {
+  width: 0%;
+}
+.organic .btn-type {
+  display: none;
+}
+
+.trash-recycle .row > div {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  margin-bottom: 3em;
+}
+.trash-recycle h5 {
+  margin: 2em;
+}
+.trash-recycle .img-type {
+  left: 2em;
+  position: relative;
+}
+.trash-recycle .img-reuse {
+  width: 8em;
+  animation: rotate 1s infinite;
+  transition: 1s;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.trash-recycle .progress {
+  width: 60%;
+  margin: auto;
+  transition: all 1s;
+}
+.trash-recycle .btn-wrapper {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -16,7 +16,7 @@
     crossorigin="anonymous" />
 
   <!-- Style CSS -->
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style/style.css" />
 
   <!-- Toggle CSS -->
   <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
@@ -28,11 +28,19 @@
   <div class="container">
     <div class="home">
       <h1>Mesin Pendaur & Pemilah Sampah Otimatis</h1>
-      <img src="/img/waste.png" class="icon-img waste" alt="waste" />
-      <img src="/img/garbage.png" class="icon-img garbage" alt="garbage" />
-      <i class="fa fa-angle-double-right"></i>
-      <i class="fa fa-angle-double-right"></i>
-      <i class="fa fa-angle-double-right"></i>
+      <div class="row">
+        <div class="col-md-5">
+          <img src="/img/waste.png" class="icon-img waste" alt="waste" />
+        </div>
+        <div class="col-md-2">
+          <i class="fa fa-angle-double-right"></i>
+          <i class="fa fa-angle-double-right"></i>
+          <i class="fa fa-angle-double-right"></i>
+        </div>
+        <div class="col-md-5">
+          <img src="/img/garbage.png" class="icon-img garbage" alt="garbage" />
+        </div>
+      </div>
       <button class="btn btn-success start">
         <i class="fa fa-sign-in-alt mr-2"></i> Mulai
       </button>
@@ -67,8 +75,9 @@
 
 
     <div class="organic">
-      <h1>Sampah Non-Organik</h1>
+      <h1>Sampah Organik</h1>
       <img src="" alt="trash-type" class="img-type" width="200px">
+
       <h2>Tekan mulai untuk memilah sampah secara otomatis</h2>
       <div class="loader-wrapper">
         <div class="loader my-3 text-success">
@@ -89,7 +98,6 @@
         <button class="btn btn-success start">
           <i class="fa fa-sign-in-alt mr-2"></i> Mulai
         </button>
-
       </div>
       <div class="btn-type">
         <button class="btn btn-secondary back">
@@ -100,6 +108,43 @@
         </button>
         <button class="btn btn-success recycle">
           <i class="fa fa-recycle mr-2"></i> Daur Ulang
+        </button>
+
+      </div>
+    </div>
+
+    <div class="trash-recycle">
+      <h1></h1>
+      <div class="row">
+        <div class="col-md-4">
+          <img src="" alt="trash-type" class="img-type" width="200px">
+        </div>
+        <div class="col-md-4">
+          <img src="/img/reuse.png" alt="trash-type" class="img-reuse" width="200px">
+        </div>
+        <div class="col-md-4">
+          <div class="reused text-success">
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="loader-wrapper">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <h5 class="mt-3">Mendaur Ulang...</h5>
+
+      <div class="btn-wrapper">
+        <button class="btn btn-secondary back">
+          <i class="fa fa-backward mr-2"></i> Kembali
+        </button>
+        <button class="btn btn-success done">
+          <i class="fa fa-check mr-2"></i> Selesai
         </button>
 
       </div>
@@ -121,82 +166,8 @@
   <!-- Toggle JS -->
   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
-  <!-- Script JS -->
-  <script>
-    $('.home .start').on('click', () => {
-      $('.home').addClass('slide-up')
-    })
-
-    $('.trash-type .back').on('click', () => {
-      $('.home').removeClass('slide-up')
-    })
-
-    $('.trash-type .next').on('click', () => {
-      $('.trash-type').addClass('slide-up')
-    })
-    $('.organic .back').on('click', () => {
-      $('.trash-type').removeClass('slide-up')
-    })
-
-    let run = false
-    let width = 0;
-    let id;
-
-    function frame() {
-      let random = Math.floor((Math.random() * 4) + 1)
-      let type = (random === 1) ? 'Metal' : (random === 2) ? 'Kertas' : (random === 3) ? 'Kaca' : 'Plastik'
-      
-      $('.organic .img-type').fadeIn()
-      $('.organic h2').html('')
-      $('.organic .img-type').attr('src',`/img/${type}.png`)
-
-      if (width === 100) {
-        run = false
-        width = 0
-        $('.organic .loader-wrapper').fadeOut()
-        $('.organic .progress-bar').css('width', '0%')
-        clearInterval(id);
-
-        $('.organic .btn-organic').hide()
-        $('.organic .btn-type').show()
-        $('.organic h2').html(`Sampah berjenis ${type}`)
-
-
-        Swal.fire({
-          icon: 'success',
-          title: 'Berhasil Dipindai...',
-          confirmButtonColor: '#198754'
-        })
-      } else {
-        width++;
-        $('.organic .progress-bar').css('width', `${width*1.4}%`)
-        $('.organic .progress-bar').html(`${width}%`)
-
-      }
-
-    }
-
-
-    $('.organic .start').on('click', () => {
-      run = true
-      $('.organic .loader-wrapper').fadeIn()
-      id = run ? setInterval(frame, 30) : false
-    })
-
-    $('.organic .rescan').on('click', () => {
-      run = true
-      $('.organic .loader-wrapper').fadeIn()
-      id = run ? setInterval(frame, 30) : false
-
-    })
-
-    $('.organic .recycle').on('click', () => {
-      run = true
-      $('.organic .loader-wrapper').fadeIn()
-      id = run ? setInterval(frame, 30) : false
-
-    })
-  </script>
+  <!-- Scripst JS -->
+  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/script.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,125 @@
+*, html, body
+  padding: 0
+  margin: 0
+
+
+.container
+  margin-top: 2em
+  text-align: center
+  padding: 3em
+  background: #abcdef
+  position: relative
+  height: 90vh
+  border-radius: 1.5em
+  overflow: hidden
+  h1
+    margin-bottom: 2em
+  button
+    border-radius: 2em
+    padding: .5em 2em
+
+
+.home
+  height: 100%
+  position: relative
+  transition: 1s
+  // display: none
+  &.slide-up
+    margin-top: -85vh
+  .row > div
+    display: grid
+    align-content: center
+    justify-items: center
+
+  .icon-img
+    width: 50%
+
+  .fa-angle-double-right
+    font-size: 3rem
+  button
+    position: absolute
+    bottom: 2em
+    transform: translateX(-50%)
+
+.trash-type
+  // display: none
+  height: 100%
+  position: relative
+  margin-top: 3em
+  transition: 1s
+  &.slide-up
+    margin-top: -76vh
+  h2
+    margin: 1em 0 1em 
+  .row>div
+    display: grid
+    align-content: center
+    justify-items: center
+  // .toggler
+  //   border-radius: 20rem !important
+  img
+    width: 60%
+
+.organic
+  margin-top: 3.5em
+  margin-bottom: 20em
+  transition: 1s
+  &.slide-up
+    margin-top: -115vh
+
+  .img-type
+      display: none
+  h2
+    margin-top: .5em
+
+  .reused
+    display: none
+    position: absolute
+    top: 3em
+    right: 1em
+  
+  .loader-wrapper
+    width: 100%
+    position: relative
+    opacity: 1
+    display: none
+  button
+    margin-top: 2.5em
+  .progress
+    width: 60%
+    margin: auto
+    transition: all 1s
+    .progress-bar
+      width: 0%
+  .btn-type
+    display: none
+
+.trash-recycle
+  .row>div
+    display: grid
+    align-content: center
+    justify-items: center
+    margin-bottom: 3em
+  h5
+    margin: 2em
+  .img-type
+    left: 2em
+    position: relative
+  .img-reuse
+    width: 8em
+    animation: rotate 1s infinite
+    transition: 1s
+    
+  @keyframes rotate 
+    from
+      transform: rotate(0)
+    to
+      transform: rotate(360deg)
+
+  .progress
+    width: 60%
+    margin: auto
+    transition: all 1s
+  
+  .btn-wrapper
+    display: none
